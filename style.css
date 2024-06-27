@@ -1,0 +1,86 @@
+* {
+	margin: 0%;
+	padding: 0%;
+	box-sizing: border-box;
+	cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" viewBox="0 0 24 24"><path fill="%23FFF" stroke="%23000" stroke-width="0.25" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z"></path></svg>'),
+		auto;
+}
+html body {
+	background: #111;
+}
+h1 {
+	margin-top: 150px;
+	color: white;
+	text-align: center;
+	letter-spacing: 10px;
+	text-transform: uppercase;
+}
+
+.wrapper {
+	margin-top: 100px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	width: 70vw;
+	left: 11.5%;
+}
+.items {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.items img {
+	height: 14rem;
+	margin: 2px;
+	border-radius: 10px;
+}
+.wrapper {
+	transform-style: preserve-3d;
+	transform: perspective(1000px);
+}
+.wrapper .items {
+	transition: 0.5s;
+	filter: brightness(0.4) grayscale(0.2);
+}
+
+/** MAIN HOVERED IMAGES */
+.wrapper .items:hover {
+	filter: brightness(1) grayscale(0);
+	transform: translateZ(200px);
+}
+
+/** RIGHT SIDE IMAGES */
+.wrapper .items:hover + * {
+	filter: brightness(0.8) grayscale(0.5);
+	transform: translateZ(140px) rotateY(30deg);
+}
+.wrapper .items:hover + * + * {
+	filter: brightness(0.7) grayscale(0.4);
+	transform: translateZ(70px) rotateY(20deg);
+}
+.wrapper .items:hover + * + * + * {
+	filter: brightness(0.6) grayscale(0.3);
+	transform: translateZ(35px) rotateY(10deg);
+}
+.wrapper .items:hover + * + * + * + * {
+	filter: brightness(0.5) grayscale(0.2);
+	transform: translateZ(17px) rotateY(5deg);
+}
+
+/** LEFT SIDE IMAGES */
+.wrapper .items:has(+ *:hover) {
+	filter: brightness(0.8) grayscale(0.5);
+	transform: translateZ(140px) rotateY(-30deg);
+}
+.wrapper .items:has(+ * + *:hover) {
+	filter: brightness(0.7) grayscale(0.4);
+	transform: translateZ(70px) rotateY(-20deg);
+}
+.wrapper .items:has(+ * + * + *:hover) {
+	filter: brightness(0.6) grayscale(0.3);
+	transform: translateZ(35px) rotateY(-10deg);
+}
+.wrapper .items:has(+ * + * + * + *:hover) {
+	filter: brightness(0.5) grayscale(0.2);
+	transform: translateZ(17px) rotateY(-5deg);
+}
